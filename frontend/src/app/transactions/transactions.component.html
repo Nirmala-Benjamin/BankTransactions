@@ -1,0 +1,33 @@
+<div class="container">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Search by name" class="search-box" />
+  
+    <div *ngIf="isLoading" class="spinner">Loading transactions...</div>
+  
+    <div *ngIf="errorMessage" class="error-toast">{{ errorMessage }}</div>
+  
+    <div *ngIf="!isLoading && !errorMessage && filteredTransactions.length === 0" class="empty-state">
+      No transactions found.
+    </div>
+  
+    <div *ngFor="let group of filteredTransactions" class="clsTransactionGroup">
+      <h3>{{ group[0] | date: 'EEEE, MMMM d yyyy' }}</h3>
+      <ul>
+        <li *ngFor="let tx of group[1]" (click)="goToDetail(tx)" class="transaction-item">
+          <span class="party" >{{ tx.otherParty?.name || 'ATM' }}</span>
+          <span class="amount"
+          [ngClass]="{
+            'credit': (tx.currencyCode === 'USD' ? tx.amount * (tx.currencyRate ?? 1) : tx.amount) > 0,
+            'debit': (tx.currencyCode === 'USD' ? tx.amount * (tx.currencyRate ?? 1) : tx.amount) < 0
+          }" >
+          € 
+          {{
+            (tx.currencyCode === 'USD' ? tx.amount * (tx.currencyRate ?? 1) : tx.amount) > 0 
+              ? '+' + (tx.currencyCode === 'USD' ? (tx.amount * (tx.currencyRate ?? 1)).toFixed(2) : tx.amount.toFixed(2)) 
+              : (tx.currencyCode === 'USD' ? (tx.amount * (tx.currencyRate ?? 1)).toFixed(2) : tx.amount.toFixed(2))
+          }}
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

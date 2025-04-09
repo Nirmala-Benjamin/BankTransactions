@@ -1,0 +1,22 @@
+<div *ngIf="transaction" class="card">
+    <h2>Transaction Detail</h2>
+    <div class="detail-row">
+      <label>Amount:</label>
+      <span>€ {{ isCredit() ? '+' : '' }}{{ convertedAmount.toFixed(2) }}</span>
+    </div>
+    <div class="detail-row">
+      <label>Date:</label>
+      <span>{{ transaction.timestamp | date:'medium' }}</span>
+    </div>
+    <div class="detail-row" *ngIf="transaction.otherParty">
+      <label>Other Party:</label>
+      <span>{{ transaction.otherParty.name }}</span>
+    </div>
+    <div class="detail-row" *ngIf="transaction.description">
+      <label>Description:</label>
+      <span>{{ transaction.description }}</span>
+    </div>
+  
+    <a class="back-button" routerLink="/">← Back to Transactions</a>
+  </div>
+  
