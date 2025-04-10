@@ -13,7 +13,7 @@
       <h3>{{ group[0] | date: 'EEEE, MMMM d yyyy' }}</h3>
       <ul>
         <li *ngFor="let tx of group[1]" (click)="goToDetail(tx)" class="transaction-item">
-          <span class="party" >{{ tx.otherParty?.name || 'ATM' }}</span>
+          <span class="party" >{{ tx.otherParty?.name || 'Cash' }}</span>
           <span class="amount"
           [ngClass]="{
             'credit': (tx.currencyCode === 'USD' ? tx.amount * (tx.currencyRate ?? 1) : tx.amount) > 0,
