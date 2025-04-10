@@ -5,7 +5,7 @@ import { Transaction, TransactionDay, TransactionsResponse } from '../models/tra
 
 @Injectable({ providedIn: 'root' })
 export class TransactionService {
-  private apiUrl = 'http://localhost:8080/api/transactions';
+  private apiUrl = 'https://banktransactions-1.onrender.com/api/transactions';
 
   constructor(private http: HttpClient) {}
 

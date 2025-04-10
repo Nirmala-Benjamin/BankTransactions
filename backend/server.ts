@@ -5,6 +5,7 @@ const app = express();
 
 const allowedOrigins = [
   'http://localhost:4200',
+  'https://banktransactions-1.onrender.com'
 ]
 
 app.use(cors({

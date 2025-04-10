@@ -14,11 +14,8 @@ export class TransactionDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private service: TransactionService) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.service.getFlattenedTransactions().subscribe((data: Transaction[]) => {
-      this.transaction = data.find((tx: Transaction) => tx.id === id);
-    });
+    const nav = history.state;
+  this.transaction = nav.transaction;
   }
   get convertedAmount(): number {
     if (!this.transaction) return 0;

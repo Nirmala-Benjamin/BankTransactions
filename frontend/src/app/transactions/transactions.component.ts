@@ -45,15 +45,24 @@ export class TransactionsComponent implements OnInit {
 
   get filteredTransactions(): [string, Transaction[]][] {
     if (!this.searchTerm.trim()) return this.transactionsByDate;
-
+  
+    const term = this.searchTerm.toLowerCase();
+  
     return this.transactionsByDate
-      .map(([date, txs]) => [date, txs.filter(tx =>
-        tx.otherParty?.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-      )] as [string, Transaction[]])
+      .map(([date, txs]) => [
+        date,
+        txs.filter(tx => {
+          // Use 'cash' if there is no other party name
+          const name = tx.otherParty?.name?.toLowerCase() || 'cash';
+          return name.includes(term);
+        })
+      ] as [string, Transaction[]])
       .filter(([_, txs]) => txs.length > 0);
   }
-
+  
   goToDetail(tx: Transaction) {
-    this.router.navigate(['/detail', tx.id]);
+    this.router.navigate(['/detail', tx.id], {
+      state: { transaction: tx }
+    });
   }
 }
