@@ -33,15 +33,3 @@ For further assistance:
 - Use the command `ng help` to view available Angular CLI commands.
 - Visit the [Angular CLI Documentation](https://angular.io/cli) for more information.
 
-### Unit Tests
-- Run `ng test` to execute the unit tests using [Karma](https://karma-runner.github.io).
-
-### End-to-End Tests
-- Run `ng e2e` to execute end-to-end tests using a testing platform of your choice.
-- Note: You might need to add a package that supports end-to-end testing before using this command.
-
-## Getting Help
-
-For further assistance:
-- Use the command `ng help` to view available Angular CLI commands.
-- Visit the [Angular CLI Documentation](https://angular.io/cli) for more information.
