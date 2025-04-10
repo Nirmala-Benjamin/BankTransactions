@@ -21,9 +21,9 @@
           }" >
           € 
           {{
-            (tx.currencyCode === 'USD' ? tx.amount * (tx.currencyRate ?? 1) : tx.amount) > 0 
-              ? '+' + (tx.currencyCode === 'USD' ? (tx.amount * (tx.currencyRate ?? 1)).toFixed(2) : tx.amount.toFixed(2)) 
-              : (tx.currencyCode === 'USD' ? (tx.amount * (tx.currencyRate ?? 1)).toFixed(2) : tx.amount.toFixed(2))
+            convertToEUR(tx.amount, tx.currencyCode, tx.currencyRate) > 0 
+              ? '+' + convertToEUR(tx.amount, tx.currencyCode, tx.currencyRate).toFixed(2)
+              : convertToEUR(tx.amount, tx.currencyCode, tx.currencyRate).toFixed(2)
           }}
           </span>
         </li>

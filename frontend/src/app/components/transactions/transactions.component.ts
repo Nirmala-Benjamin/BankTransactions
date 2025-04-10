@@ -29,7 +29,12 @@ export class TransactionsComponent implements OnInit {
       }
     );
   }
-
+  convertToEUR(amount: number, currency: string, rate: number = 1): number {
+    if (currency === 'USD') {
+      return amount * rate; 
+    }
+    return amount; 
+  }
   groupByDate(transactions: Transaction[]): [string, Transaction[]][] {
     const grouped: Record<string, Transaction[]> = {};
     for (const tx of transactions) {
