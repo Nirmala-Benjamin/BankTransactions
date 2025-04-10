@@ -6,6 +6,7 @@ const allowedOrigins = [
     'http://localhost:4200',
     'https://bank-transactions-green.vercel.app'
 ];
+
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin)
