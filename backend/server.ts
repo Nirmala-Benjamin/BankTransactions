@@ -5,7 +5,7 @@ const app = express();
 
 const allowedOrigins = [
   'http://localhost:4200',
-  'https://banktransactions-1.onrender.com'
+  'https://bank-transactions-green.vercel.app'
 ];
 
 app.use(cors({
